@@ -26,4 +26,14 @@ describe('AmountValidation' , () => {
     expect(result3).toBeInstanceOf(Error)
   })
 
+  test('Deve retornar erro quando a chave amount tiver mais de duas casas decimais', () => {
+    const amountValidation = new AmountValidation('amount')
+    const obj = {
+      amount: 49.998
+    }
+    const result = amountValidation.validate(obj)
+
+    expect(result).toBeInstanceOf(Error)
+  })
+
 })
