@@ -57,4 +57,18 @@ describe('AmountValidation' , () => {
     expect(result2).toBeInstanceOf(Error)
   })
 
+  test('Deve retornar null quando o amount for um valor válido', () => {
+    const amountValidation = new AmountValidation('amount')
+    const obj1 = { amount: 19.99 }
+    const result1 = amountValidation.validate(obj1)
+    expect(result1).toBeNull()
+
+    const obj2 = { amount: 15.8 }
+    const result2 = amountValidation.validate(obj2)
+    expect(result2).toBeNull()
+
+    const obj3 = { amount: 5 }
+    const result3 = amountValidation.validate(obj3)
+    expect(result3).toBeNull()
+  })
 })
