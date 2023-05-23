@@ -1,0 +1,1 @@
+CREATE TYPE dc AS ENUM ('D', 'C');
