@@ -1,6 +1,6 @@
 import { TransactionModel, TransactionType } from "../../src/domain/models/transactions"
 import { AddTransaction } from "../../src/domain/usecases/add-transaction"
-import CreditDebitController from "../../src/presentation/controllers/credit-debit/credit-debit-controller"
+import TransactionController from "../../src/presentation/controllers/transaction/transaction-controller"
 import { Validation } from '../../src/presentation/interfaces/validation'
 import { HttpRequest } from "../../src/presentation/types/http"
 
@@ -37,7 +37,7 @@ function makeValidation(): Validation {
 }
 
 type sutType = {
-  sut: CreditDebitController,
+  sut: TransactionController,
   valitationStub: Validation,
   addTransactionStub: AddTransaction
 }
@@ -45,7 +45,7 @@ type sutType = {
 function makeSut(transactionType: TransactionType): sutType {
   const valitationStub = makeValidation()
   const addTransactionStub = makeAddTransaction()
-  const sut = new CreditDebitController(valitationStub, addTransactionStub, transactionType)
+  const sut = new TransactionController(valitationStub, addTransactionStub, transactionType)
 
   return {
     sut,
