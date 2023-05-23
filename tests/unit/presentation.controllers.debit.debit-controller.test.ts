@@ -69,4 +69,17 @@ describe('DebitController' , () => {
     expect(response.statusCode).toBe(400);
     expect(response.body).toEqual(error);
   })
+
+  test('Deve retornar 500 se ocorrer algum erro durante a validação', async () => {
+    const { sut, valitationStub } = makeSut()
+    jest.spyOn(valitationStub, "validate").mockImplementationOnce(() => {
+      throw new Error()
+    })
+
+    const requestBody: HttpRequest = makeRequest()
+    const response = await sut.handle(requestBody)
+
+    expect(response.statusCode).toBe(500);
+  })
+
 })
