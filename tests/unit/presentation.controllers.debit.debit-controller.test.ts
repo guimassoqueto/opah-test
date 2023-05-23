@@ -93,4 +93,12 @@ describe('DebitController' , () => {
     await sut.handle(requestBody)
     expect(addSpy).toHaveBeenCalledWith(300.47, 'D')
   })
+
+  test('Deve retornar 200 em caso de sucesso', async () => {
+    const { sut } = makeSut()
+    const requestBody = makeRequest()
+    const response = await sut.handle(requestBody)
+
+    expect(response.statusCode).toBe(200)
+  })
 })
