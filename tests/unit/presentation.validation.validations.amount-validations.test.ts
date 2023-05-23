@@ -36,4 +36,14 @@ describe('AmountValidation' , () => {
     expect(result).toBeInstanceOf(Error)
   })
 
+  test('Deve retornar erro quando a chave amount for menor que zero', () => {
+    const amountValidation = new AmountValidation('amount')
+    const obj = {
+      amount: -17.50
+    }
+    const result = amountValidation.validate(obj)
+
+    expect(result).toBeInstanceOf(Error)
+  })
+
 })
