@@ -1,6 +1,6 @@
-import { TransactionModel, DebitOrCredit } from "../../src/domain/models/transactions"
+import { TransactionModel, TransactionType } from "../../src/domain/models/transactions"
 import { AddTransaction } from "../../src/domain/usecases/add-transaction"
-import DebitController from "../../src/presentation/controllers/debit/debit-controller"
+import CreditDebitController from "../../src/presentation/controllers/credit-debit/credit-debit-controller"
 import { Validation } from '../../src/presentation/interfaces/validation'
 import { HttpRequest } from "../../src/presentation/types/http"
 
@@ -14,7 +14,7 @@ function makeRequest(): HttpRequest {
 
 function makeAddTransaction(): AddTransaction {
   class AddTransactionStub implements AddTransaction {
-    async add (amount: number, _: DebitOrCredit): Promise<TransactionModel> {
+    async add (amount: number, _: TransactionType): Promise<TransactionModel> {
       return new Promise(resolve => resolve({
         id: "any-uuid",
         amount: amount,
@@ -37,15 +37,15 @@ function makeValidation(): Validation {
 }
 
 type sutType = {
-  sut: DebitController,
+  sut: CreditDebitController,
   valitationStub: Validation,
   addTransactionStub: AddTransaction
 }
 
-function makeSut(): sutType {
+function makeSut(transactionType: TransactionType): sutType {
   const valitationStub = makeValidation()
   const addTransactionStub = makeAddTransaction()
-  const sut = new DebitController(valitationStub, addTransactionStub)
+  const sut = new CreditDebitController(valitationStub, addTransactionStub, transactionType)
 
   return {
     sut,
@@ -54,9 +54,9 @@ function makeSut(): sutType {
   }
 }
 
-describe('DebitController' , () => {
+describe('CreditDebitController' , () => {
   test('Deve retornar 400 se o amount não passar na validação', async () => {
-    const { sut, valitationStub } = makeSut()
+    const { sut, valitationStub } = makeSut("C")
     const error = new Error("any error")
     jest.spyOn(valitationStub, "validate").mockReturnValue(error)
 
@@ -71,7 +71,7 @@ describe('DebitController' , () => {
   })
 
   test('Deve retornar 500 se ocorrer algum erro durante a validação', async () => {
-    const { sut, valitationStub } = makeSut()
+    const { sut, valitationStub } = makeSut("D")
     jest.spyOn(valitationStub, "validate").mockImplementationOnce(() => {
       throw new Error()
     })
@@ -83,7 +83,8 @@ describe('DebitController' , () => {
   })
 
   test('O valor do amount da requisição deve ser o mesmo recebido como argumento no método add de addTransaction', async () => {
-    const { sut, addTransactionStub } = makeSut()
+    const transactionType: TransactionType = 'D'
+    const { sut, addTransactionStub } = makeSut(transactionType)
     const addSpy = jest.spyOn(addTransactionStub, "add")
     const requestBody: HttpRequest = {
       body: {
@@ -91,11 +92,11 @@ describe('DebitController' , () => {
       }
     }
     await sut.handle(requestBody)
-    expect(addSpy).toHaveBeenCalledWith(300.47, 'D')
+    expect(addSpy).toHaveBeenCalledWith(300.47, transactionType)
   })
 
   test('Deve retornar 200 em caso de sucesso', async () => {
-    const { sut } = makeSut()
+    const { sut } = makeSut('C')
     const requestBody = makeRequest()
     const response = await sut.handle(requestBody)
 
