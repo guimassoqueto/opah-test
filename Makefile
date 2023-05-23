@@ -1,7 +1,28 @@
 PACKAGE_MANAGER=npm
 PACKAGE_MANAGER_RUN=npm run
-BROWSER=firefox --url
+BROWSER=open
 HUSKY=npx husky install
+COMPOSE=docker compose
+
+# sobe o banco de dados e aplica as migracoes
+db-migrate:
+	${COMPOSE} up postgres migrate -d
+
+# derruba todos os container iniciados com o comando up
+down:
+	${COMPOSE} down
+
+# sobe o banco de dados, sem migracoes
+db: 
+	${COMPOSE} up postgres -d
+
+# aplica as migracoes no banco
+migrate:
+	${COMPOSE} up migrate -d
+
+# cria o arquivo .env baseado no .env.sample
+env:
+	cat .env.sample 1> .env
 
 ## instala o husky e dependências do node
 install:
@@ -33,4 +54,4 @@ test-file:
 
 ## abre a página do repositorio no github
 open-repo:
-	${BROWSER} "https://github.com/guimassoqueto/scraper-puppeteer"
+	${BROWSER} "https://github.com/guimassoqueto/opah-test"
