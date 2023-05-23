@@ -8,7 +8,7 @@ import loggerConfig from '../../../logger-config'
 
 const logger = loggerConfig('CreditDebitController')
 
-export default class CreditDebitController implements Controller {
+export default class TransactionController implements Controller {
   constructor (
     private readonly validation: Validation,
     private readonly addTransaction: AddTransaction,
