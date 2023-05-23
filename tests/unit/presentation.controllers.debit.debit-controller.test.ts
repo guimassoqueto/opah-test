@@ -82,4 +82,15 @@ describe('DebitController' , () => {
     expect(response.statusCode).toBe(500);
   })
 
+  test('O valor do amount da requisição deve ser o mesmo recebido como argumento no método add de addTransaction', async () => {
+    const { sut, addTransactionStub } = makeSut()
+    const addSpy = jest.spyOn(addTransactionStub, "add")
+    const requestBody: HttpRequest = {
+      body: {
+        amount: 300.47
+      }
+    }
+    await sut.handle(requestBody)
+    expect(addSpy).toHaveBeenCalledWith(300.47, 'D')
+  })
 })
