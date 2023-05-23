@@ -55,4 +55,18 @@ function makeSut(): sutType {
 }
 
 describe('DebitController' , () => {
+  test('Deve retornar 400 se o amount não passar na validação', async () => {
+    const { sut, valitationStub } = makeSut()
+    const error = new Error("any error")
+    jest.spyOn(valitationStub, "validate").mockReturnValue(error)
+
+    const requestBody = makeRequest()
+    delete requestBody.body.amount
+    expect(requestBody.body).toEqual({})
+
+    const response = await sut.handle(requestBody)
+
+    expect(response.statusCode).toBe(400);
+    expect(response.body).toEqual(error);
+  })
 })
