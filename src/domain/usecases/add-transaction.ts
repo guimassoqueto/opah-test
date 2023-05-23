@@ -1,5 +1,5 @@
-import { type TransactionModel, type DebitOrCredit } from '../models/transactions'
+import { type TransactionModel, type TransactionType } from '../models/transactions'
 
 export interface AddTransaction {
-  add: (amount: number, type: DebitOrCredit) => Promise<TransactionModel>
+  add: (amount: number, type: TransactionType) => Promise<TransactionModel>
 }

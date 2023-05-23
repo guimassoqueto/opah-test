@@ -1,8 +1,8 @@
-export type DebitOrCredit = 'D' | 'C'
+export type TransactionType = 'D' | 'C'
 
 export interface TransactionModel {
   id: string
   amount: number
-  type: DebitOrCredit
+  type: TransactionType
   datetime: Date
 }
