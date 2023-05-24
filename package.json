@@ -4,6 +4,7 @@
   "description": "",
   "main": ".eslintrc.js",
   "scripts": {
+    "start:server": "node dist/main/main.js",
     "build": "tsc",
     "tsc:watch": "tsc --watch",
     "node:watch": "node --watch dist/main/main.js",
