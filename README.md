@@ -1,4 +1,9 @@
 ## Opah Test
+* Por se tratar de um sistema financeiro, optei em fazer a aplicação utilizando o mínimo de depedências node possível, para minimizar a possibilidade de vulnerabilidades.
+* O sistema não conta com suporte para multiplos comerciantes, e não possui sitema de autenticação. Isso pode ser extendido a qualquer momento no código. 
+* A aplicação possui alta cobertura de testes. Execute-os (após subir a aplicação) usando o comando `make test`
+* O código utiliza fortemente princípios SOLID, e facilmente nota-se a implementação de diversos padrões de design. A estrutura de classes está fortemente coesa e fracamente acoplada.
+* Em caso de dúvidas e sugestões, estou à disposição.
 
 ## Requisitos
 * [Node 20+](https://nodejs.org/en)
