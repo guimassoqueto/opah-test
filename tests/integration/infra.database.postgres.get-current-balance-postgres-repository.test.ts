@@ -34,4 +34,25 @@ describe('TransactionPostgresRepository add' , () => {
     expect(balance).toBe(0)
   })
 
+  test(`
+    Deve retornar zero quando o total de débitos for igual o total de 
+    créditos (inteiros)
+  `, async () => {
+    await client.query(`
+    INSERT INTO transactions(amount, "type") 
+    VALUES($1, $2)
+    `, [10, 'D'])
+
+    await client.query(`
+    INSERT INTO transactions(amount, "type") 
+    VALUES($1, $2)
+    `, [10, 'C'])
+
+    client.release()
+
+    const sut = new GetCurrentBalancePostgresRepository()
+    const balance = await sut.get()
+
+    expect(balance).toBe(0)
+  })
 })
