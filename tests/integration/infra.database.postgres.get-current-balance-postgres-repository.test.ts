@@ -121,4 +121,27 @@ describe('TransactionPostgresRepository add' , () => {
 
     expect(balance).toBe(5)
   })
+
+  test(`
+  Deve retornar o valor absoluto positivo, caso haja apenas operaçoes de crédito
+  `, async () => {
+
+    await client.query(`
+    INSERT INTO transactions(amount, "type") 
+    VALUES($1, $2)
+    `, [10.49, 'C'])
+
+    await client.query(`
+    INSERT INTO transactions(amount, "type") 
+    VALUES($1, $2)
+    `, [10.50, 'C'])
+
+    client.release()
+
+    const sut = new GetCurrentBalancePostgresRepository()
+    const balance = await sut.get()
+
+    expect(balance).toBe(20.99)
+    expect(balance).toBeGreaterThan(0)
+  })
 })
