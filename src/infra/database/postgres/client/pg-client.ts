@@ -16,8 +16,16 @@ const poolConfig: PoolConfig = {
   database: POSTGRES_DB,
   max: 1, // TODO: valor deve ser outro para prod
   idleTimeoutMillis: 3000,
-  connectionTimeoutMillis: 5000
+  connectionTimeoutMillis: 1000
 }
+
+// export const pgPool = new Pool(poolConfig)
+
+// export function transactionMapper (obj: any): TransactionModel {
+//   if (!obj) throw new Error()
+//   const { amount, ...rest } = obj
+//   return Object.assign({}, rest, { amount: parseFloat(amount) }) as TransactionModel
+// }
 
 export class PostgresClient {
   public client: Pool = new Pool(poolConfig)
