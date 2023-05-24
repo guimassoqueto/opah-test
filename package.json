@@ -9,7 +9,7 @@
     "node:watch": "node --watch dist/main/main.js",
     "start:ts": "ts-node src/main/main.ts",
     "lint:staged": "lint-staged",
-    "test": "jest --passWithNoTests --runInBand",
+    "test": "jest --passWithNoTests --runInBand --detectOpenHandles",
     "test:simplified": "npm test -- --silent --noStackTrace --coverage=false --detectOpenHandles",
     "test:unit": "npm test -- --noStackTrace --silent --detectOpenHandles -c jest-unit.config.ts",
     "test:integration": "npm test -- --noStackTrace --silent --detectOpenHandles -c jest-integration.config.ts"
