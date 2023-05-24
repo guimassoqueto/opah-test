@@ -22,7 +22,7 @@ export default class TransactionController implements Controller {
       if (error) return badRequest(error)
 
       const { amount } = request.body
-      const transaction = await this.addTransaction.add(amount, this.transactionType)
+      const transaction = await this.addTransaction.add({ amount, type: this.transactionType })
 
       return ok(transaction)
     } catch (error) {
