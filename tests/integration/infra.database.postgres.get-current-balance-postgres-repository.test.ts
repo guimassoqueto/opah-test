@@ -77,4 +77,26 @@ describe('TransactionPostgresRepository add' , () => {
 
     expect(balance).toBe(0.01)
   })
+
+  test(`
+  Deve retornar a diferença correta e negativa quando o total de créditos for 
+  menor que o total de débitos (ponto flutuante)
+    `, async () => {
+    await client.query(`
+    INSERT INTO transactions(amount, "type") 
+    VALUES($1, $2)
+    `, [10.49, 'C'])
+
+    await client.query(`
+    INSERT INTO transactions(amount, "type") 
+    VALUES($1, $2)
+    `, [11.51, 'D'])
+
+    client.release()
+
+    const sut = new GetCurrentBalancePostgresRepository()
+    const balance = await sut.get()
+
+    expect(balance).toBe(-1.02)
+  })
 })
