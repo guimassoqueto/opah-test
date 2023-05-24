@@ -99,4 +99,26 @@ describe('TransactionPostgresRepository add' , () => {
 
     expect(balance).toBe(-1.02)
   })
+
+  test(`
+  Deve retornar a diferença correta e positiva quando o total de créditos for 
+  maior que o total de débitos (inteiros)
+  `, async () => {
+    await client.query(`
+    INSERT INTO transactions(amount, "type") 
+    VALUES($1, $2)
+    `, [15, 'C'])
+
+    await client.query(`
+    INSERT INTO transactions(amount, "type") 
+    VALUES($1, $2)
+    `, [10, 'D'])
+
+    client.release()
+
+    const sut = new GetCurrentBalancePostgresRepository()
+    const balance = await sut.get()
+
+    expect(balance).toBe(5)
+  })
 })
