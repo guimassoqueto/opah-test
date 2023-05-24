@@ -10,4 +10,11 @@ describe('RequiredField' , () => {
     expect(result).toEqual(new MissingParamError("amount"))
   })
 
+  test('Deve retornar MissingParamError se o campo foi fornecido como uma string vazia', () => {
+    const sut = new RequiredFieldValidation("amount")
+    const result = sut.validate({amount: ""})
+
+    expect(result).toEqual(new MissingParamError("amount"))
+  })
+
 })
