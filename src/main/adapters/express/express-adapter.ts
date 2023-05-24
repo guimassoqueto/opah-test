@@ -14,7 +14,7 @@ export function expressAdapter (controller: Controller) {
     }
 
     const httpResponse: HttpResponse = await controller.handle(HttpRequest)
-    if (res.statusCode >= 200 && res.statusCode < 400) res.status(httpResponse.statusCode)
+    if (httpResponse.statusCode >= 200 && httpResponse.statusCode < 400) res.status(httpResponse.statusCode).json(httpResponse.body)
     else {
       res.status(httpResponse.statusCode).json({
         error: httpResponse.body.message
