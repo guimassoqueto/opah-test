@@ -59,4 +59,15 @@ describe('DbAddTransaction' , () => {
     expect(spyAdd).toHaveBeenCalledWith(transaction)
   })
 
+  test('Deve retornar a transaction inserida no banco corretamente', async () => {
+    const { sut, addTransactionRepositoryStub } = makeSut()
+    const transaction = makeTransaction()
+    const transactionDataDB = await sut.add(transaction)
+
+    expect(transactionDataDB).toBeTruthy()
+    expect(transactionDataDB.id).toBe("any-uuid")
+    expect(transactionDataDB.amount).toBe(transaction.amount)
+    expect(transactionDataDB.type).toBe(transaction.type)
+    expect(transactionDataDB.datetime).toBeInstanceOf(Date)
+  })
 })
