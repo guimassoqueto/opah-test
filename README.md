@@ -10,7 +10,7 @@
 ### Para usuários Linux (Debian)
 1. Instale o pacote buid-essential: `sudo apt-get install build-essential`
 2. `make env` para gerar os arquivos *compose.env* e *.env*
-* Para rodar a aplicação completamente containerizada (banco de dados + migrações + aplicacção node): `make up`
+* Para rodar a aplicação completamente containerizada (banco de dados + migrações + aplicacção node) (ignore passos 3 e 4): `make up`
 3. `make install` para instalar as dependências do node
 4. Escolha entre:  
 -- `make start-ts` para executar a aplicação sem a necessidade de transpilar o código  
@@ -57,7 +57,7 @@ Response body: {
   "datetime": "2023-05-24T19:12:56.519Z"
 }
 ```
-:bangbang:
+:heavy_check_mark:
 ```
 GET /transactions/balance
 Response: 200 Ok
