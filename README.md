@@ -20,7 +20,7 @@
 1. Instale o gerenciador [Gerenciador Chocolatey](https://chocolatey.org/install)
 2. Instale o pacote make (para rodar comandos make): `choco install make`
 3. Configure as varáveis de ambiente *.env* e *compose.env* a partir do *.env.sample*
-* Para executar a aplicação containerizada (ignore os passos 3, 4, e 5): `make up`. Neste caso adicione a linha `POSTGRES_HOST="postgres"` no arquivo *compose.env*
+* Para executar a aplicação containerizada (ignore os passos 4, e 5): `make up`. Neste caso adicione a linha `POSTGRES_HOST="postgres"` no arquivo *compose.env*
 4. `make install` para instalar as dependências do node
 5. Escolha entre:  
 -- `make start-ts` para executar a aplicação sem a necessidade de transpilar o código  
