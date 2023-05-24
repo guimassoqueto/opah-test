@@ -1,7 +1,7 @@
-import { DbAddTransaction } from '../../src/data/usecases/add-transaction/db-add-transaction'
+import { DbAddTransaction } from '../../src/data/usecases/db-add-transaction'
 import { AddTransactionRepository } from '../../src/data/interfaces/database/transaction/add-transaction-repository'
 import { AddTransactionModel } from '../../src/domain/usecases/add-transaction';
-import { TransactionModel, TransactionType } from '../../src/domain/models/transactions';
+import { TransactionModel } from '../../src/domain/models/transactions';
 
 function makeTransaction(): AddTransactionModel {
   return {

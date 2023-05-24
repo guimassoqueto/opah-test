@@ -19,14 +19,9 @@ const poolConfig: PoolConfig = {
   connectionTimeoutMillis: 1000
 }
 
-// export const pgPool = new Pool(poolConfig)
+export const pgPool = new Pool(poolConfig)
 
-// export function transactionMapper (obj: any): TransactionModel {
-//   if (!obj) throw new Error()
-//   const { amount, ...rest } = obj
-//   return Object.assign({}, rest, { amount: parseFloat(amount) }) as TransactionModel
-// }
-
+// singleton
 export class PostgresClient {
   public client: Pool = new Pool(poolConfig)
 

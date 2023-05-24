@@ -6,9 +6,12 @@ import { PostgresClient } from '../client/pg-client'
 export class TransactionPostgresRepository implements AddTransactionRepository {
   async add (transaction: AddTransactionModel): Promise<TransactionModel> {
     const pgClient = PostgresClient.getInstance()
-    const result = await pgClient.query(
-      'INSERT INTO transactions(amount, "type") VALUES($1, $2) RETURNING *',
-      [transaction.amount, transaction.type]
+    const result = await pgClient.query(`
+      INSERT INTO transactions(amount, "type") 
+      VALUES($1, $2) 
+      RETURNING *
+    `,
+    [transaction.amount, transaction.type]
     )
 
     return pgClient.transactionMapper(result.rows[0])
