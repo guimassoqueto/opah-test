@@ -16,5 +16,13 @@ function makeSut(): TransactionPostgresRepository {
 
 describe('TransactionPostgresRepository add' , () => {
 
+  test('Deve retornar uma transação se a inserção do dado ocorrer adequadamente', async () => {
+    const sut = makeSut()
+    const transactionToBeAdded = makeTransaction('C')
+    const account = await sut.add(transactionToBeAdded)
 
+    expect(account).toBeTruthy()
+    expect(account.amount).toBe(transactionToBeAdded.amount)
+    expect(account.type).toBe(transactionToBeAdded.type)
+  })
 })
