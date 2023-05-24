@@ -1,4 +1,5 @@
 import { TransactionModel, TransactionType } from "../../src/domain/models/transactions"
+import { AddTransactionModel } from "../../src/domain/usecases/add-transaction"
 import { AddTransaction } from "../../src/domain/usecases/add-transaction"
 import TransactionController from "../../src/presentation/controllers/transaction/transaction-controller"
 import { Validation } from '../../src/presentation/interfaces/validation'
@@ -14,10 +15,10 @@ function makeRequest(): HttpRequest {
 
 function makeAddTransaction(): AddTransaction {
   class AddTransactionStub implements AddTransaction {
-    async add (amount: number, _: TransactionType): Promise<TransactionModel> {
+    async add (transaction: AddTransactionModel): Promise<TransactionModel> {
       return new Promise(resolve => resolve({
         id: "any-uuid",
-        amount: amount,
+        amount: transaction.amount,
         type: 'D',
         datetime: new Date(2023, 11, 31)
       }))
@@ -92,7 +93,7 @@ describe('CreditDebitController' , () => {
       }
     }
     await sut.handle(requestBody)
-    expect(addSpy).toHaveBeenCalledWith(300.47, transactionType)
+    expect(addSpy).toHaveBeenCalledWith({"amount": 300.47, "type": "D"})
   })
 
   test('Deve retornar 200 em caso de sucesso', async () => {
