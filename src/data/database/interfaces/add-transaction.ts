@@ -1,5 +1,6 @@
-import { type TransactionModel, type TransactionType } from '../../../domain/models/transactions'
+import { type TransactionModel } from '../../../domain/models/transactions'
+import { type AddTransactionModel } from '../../../domain/usecases/add-transaction'
 
 export interface AddTransactionRepository {
-  add: (amount: number, type: TransactionType) => Promise<TransactionModel>
+  add: (transaction: AddTransactionModel) => Promise<TransactionModel>
 }
