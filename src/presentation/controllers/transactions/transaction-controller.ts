@@ -19,8 +19,10 @@ export default class TransactionController implements Controller {
     logger.info(`New ${this.transactionType === 'D' ? 'Debit' : 'Credit'} Request...`)
     try {
       const error = this.validation.validate(request.body)
-      if (error) return badRequest(error)
-
+      if (error) {
+        logger.error(error)
+        return badRequest(error)
+      }
       const { amount } = request.body
       const transaction = await this.addTransaction.add({ amount, type: this.transactionType })
 

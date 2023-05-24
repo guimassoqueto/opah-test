@@ -1,4 +1,4 @@
-import { type AddTransactionRepository } from '../../../../data/database/interfaces/add-transaction'
+import { type AddTransactionRepository } from '../../../../data/interfaces/database/transaction/add-transaction-repository'
 import { type TransactionModel } from '../../../../domain/models/transactions'
 import { type AddTransactionModel } from '../../../../domain/usecases/add-transaction'
 import { PostgresClient } from '../client/pg-client'
@@ -10,7 +10,7 @@ export class TransactionPostgresRepository implements AddTransactionRepository {
       'INSERT INTO transactions(amount, "type") VALUES($1, $2) RETURNING *',
       [transaction.amount, transaction.type]
     )
-    await pgClient.end()
+
     return pgClient.transactionMapper(result.rows[0])
   }
 }
