@@ -50,4 +50,13 @@ describe('DbAddTransaction' , () => {
     await expect(promise).rejects.toThrow()
   })
 
+  test('Deve chamar addTransactionRepository com os valores corretos', async () => {
+    const { sut, addTransactionRepositoryStub } = makeSut()
+    const spyAdd = jest.spyOn(addTransactionRepositoryStub, "add")
+    const transaction = makeTransaction()
+    await sut.add(transaction)
+
+    expect(spyAdd).toHaveBeenCalledWith(transaction)
+  })
+
 })
