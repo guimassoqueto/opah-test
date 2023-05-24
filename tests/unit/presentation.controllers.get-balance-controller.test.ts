@@ -36,4 +36,12 @@ describe('GetBalanceController' , () => {
     expect(response.statusCode).toBe(500)
   })
 
+  test('Deve retornar 200 caso o saldo retorne corretamente', async () => {
+    const { sut } = makeSut()
+    const request: HttpRequest = {}
+    const response = await sut.handle(request)
+    
+    expect(response.statusCode).toBe(200)
+    expect(response.body).toStrictEqual({ balance: 0 })
+  })
 })
