@@ -1,7 +1,7 @@
 import { TransactionModel, TransactionType } from "../../src/domain/models/transactions"
 import { AddTransactionModel } from "../../src/domain/usecases/add-transaction"
 import { AddTransaction } from "../../src/domain/usecases/add-transaction"
-import TransactionController from "../../src/presentation/controllers/transaction/transaction-controller"
+import TransactionController from "../../src/presentation/controllers/transactions/transaction-controller"
 import { Validation } from '../../src/presentation/interfaces/validation'
 import { HttpRequest } from "../../src/presentation/types/http"
 
