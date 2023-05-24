@@ -10,7 +10,7 @@ export class TransactionPostgresRepository implements AddTransactionRepository {
       'INSERT INTO transactions(amount, "type") VALUES($1, $2) RETURNING *',
       [transaction.amount, transaction.type]
     )
-    await pgClient.end()
+
     return pgClient.transactionMapper(result.rows[0])
   }
 }
