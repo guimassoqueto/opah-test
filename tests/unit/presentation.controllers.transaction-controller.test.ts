@@ -101,6 +101,6 @@ describe('CreditDebitController' , () => {
     const requestBody = makeRequest()
     const response = await sut.handle(requestBody)
 
-    expect(response.statusCode).toBe(200)
+    expect(response.statusCode).toBe(201)
   })
 })

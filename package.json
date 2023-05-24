@@ -12,7 +12,7 @@
     "lint:staged": "lint-staged",
     "test": "jest --passWithNoTests --runInBand",
     "test:simplified": "npm test -- --silent --noStackTrace --coverage=false --detectOpenHandles",
-    "test:unit": "npm test -- --noStackTrace --silent --detectOpenHandles -c jest-unit.config.ts",
+    "test:unit": "npm test -- --noStackTrace --silent -c jest-unit.config.ts",
     "test:integration": "npm test -- --noStackTrace --silent --detectOpenHandles -c jest-integration.config.ts"
   },
   "keywords": [],
