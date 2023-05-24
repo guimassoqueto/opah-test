@@ -1,4 +1,4 @@
-import { DbAddTransaction } from '../../../../data/usecases/add-transaction/db-add-transaction'
+import { DbAddTransaction } from '../../../../data/usecases/db-add-transaction'
 import { type Controller } from '../../../../presentation/protocols'
 import { TransactionPostgresRepository } from '../../../../infra/database/postgres/transactions/transaction-postgres-repository'
 import { type TransactionType } from '../../../../domain/models/transactions'
