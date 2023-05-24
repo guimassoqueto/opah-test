@@ -37,4 +37,9 @@ describe('DbGetCurrentBalance' , () => {
     await expect(promise).rejects.toThrow()
   })
 
+  test('Deve retornar o valor adequado caso a busca pelo saldo seja bem sucedida', async () => {
+    const { sut } = makeSut()
+    const balance = await sut.get()
+    expect(balance).toBe(0)
+  })
 })
