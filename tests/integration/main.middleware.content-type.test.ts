@@ -12,4 +12,15 @@ describe('contentType middleware' , () => {
       .get('/test-content-type')
       .expect('Content-Type', /json/ig) // utiliza validação via regex pois nem sempre o retorno é exatamente application/json
   })
+
+  test('Deve retornar Content-Type em outro formato quando forçado', async () => {
+    app.get('/test-content-type-png', (req: Request, res: Response) => {
+      res.type('png')
+      res.send()
+    })
+
+    await request(app)
+      .get('/test-content-type-png')
+      .expect('Content-Type', /png/ig)
+  })
 })
