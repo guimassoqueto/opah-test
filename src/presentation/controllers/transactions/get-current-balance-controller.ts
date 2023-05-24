@@ -9,7 +9,7 @@ export default class GetCurrentBalanceController implements Controller {
   constructor (private readonly getCurrentBalance: GetCurrentBalance) {}
 
   async handle (request: HttpRequest): Promise<HttpResponse> {
-    logger.info('New GetBalance Request...')
+    logger.info('New GetCurrentBalance Request...')
     try {
       const balance = await this.getCurrentBalance.get()
       return ok({ balance })

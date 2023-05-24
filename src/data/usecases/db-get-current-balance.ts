@@ -3,11 +3,11 @@ import { type GetCurrentBalance } from '../../domain/usecases/get-current-balanc
 
 export class DbGetCurrentBalance implements GetCurrentBalance {
   constructor (
-    private readonly getBalanceRepository: GetCurrentBalanceRepository
+    private readonly getCurrentBalanceRepository: GetCurrentBalanceRepository
   ) {}
 
   async get (): Promise<number> {
-    const balance = await this.getBalanceRepository.get()
+    const balance = await this.getCurrentBalanceRepository.get()
     return balance
   }
 }
