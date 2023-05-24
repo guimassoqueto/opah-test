@@ -12,5 +12,26 @@ describe('TransactionPostgresRepository add' , () => {
     pgPool.end()
   })
 
+  test(`
+    Deve retornar zero quando o total de débitos for igual ao total de créditos 
+    (ponto flutuante)
+  `, async () => {
+    await client.query(`
+    INSERT INTO transactions(amount, "type") 
+    VALUES($1, $2)
+    `, [10.50, 'D'])
+
+    await client.query(`
+    INSERT INTO transactions(amount, "type") 
+    VALUES($1, $2)
+    `, [10.50, 'C'])
+
+    client.release()
+
+    const sut = new GetCurrentBalancePostgresRepository()
+    const balance = await sut.get()
+
+    expect(balance).toBe(0)
+  })
 
 })
