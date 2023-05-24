@@ -1,6 +1,6 @@
 import { type Controller } from '../../interfaces/controller'
 import { type HttpRequest, type HttpResponse } from '../../types/http'
-import { badRequest, ok, serverError } from '../../helpers/common-responses'
+import { badRequest, created, serverError } from '../../helpers/common-responses'
 import { type Validation } from '../../interfaces/validation'
 import { type AddTransaction } from '../../../domain/usecases/add-transaction'
 import { type TransactionType } from '../../../domain/models/transactions'
@@ -26,7 +26,7 @@ export default class TransactionController implements Controller {
       const { amount } = request.body
       const transaction = await this.addTransaction.add({ amount, type: this.transactionType })
 
-      return ok(transaction)
+      return created(transaction)
     } catch (error) {
       logger.error(error)
       return serverError(error)
