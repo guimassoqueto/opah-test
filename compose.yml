@@ -35,6 +35,29 @@ services:
       postgres:
         condition: service_healthy
 
+  opah-test:
+    container_name: opah-test
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: opah-test
+    env_file:
+      - compose.env
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+    networks:
+      - local
+    depends_on:
+      postgres:
+        condition: service_healthy
+        restart: true
+    expose:
+      - ${APP_PORT}
+    entrypoint:
+      - node
+    command: 
+      - dist/main/main.js
+
 networks:
   local:
     name: local
