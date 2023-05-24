@@ -17,4 +17,10 @@ describe('RequiredField' , () => {
     expect(result).toEqual(new MissingParamError("amount"))
   })
 
+  test('Deve retornar null se o campo foi fornecido adequadamente', () => {
+    const sut = new RequiredFieldValidation("amount")
+    const result = sut.validate({amount: 19.99})
+
+    expect(result).toBe(null)
+  })
 })
