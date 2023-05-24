@@ -168,4 +168,13 @@ describe('TransactionPostgresRepository add' , () => {
     expect(balance).toBeLessThan(0)
   })
 
+  test(`
+  Deve retornar zero quando não existirem operações feitas no banco (nenhuma transação ocorreu)
+  `, async () => {
+    const sut = new GetCurrentBalancePostgresRepository()
+    const balance = await sut.get()
+    client.release()
+
+    expect(balance).toBe(0)
+  })
 })
