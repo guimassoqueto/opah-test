@@ -100,4 +100,12 @@ describe('CashFlowByDateController' , () => {
 
     expect(response.statusCode).toBe(500)
   })
+
+  test('deve retornar 200 se a aplicação executar conforme o esperado', async () => {
+    const { sut } = makeSut()
+    const request = makeRequest()
+    const reponse = await sut.handle(request) 
+
+    expect(reponse.statusCode).toBe(200)
+  })
 })
