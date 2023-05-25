@@ -1,5 +1,5 @@
 import { InvalidParamError } from '../../../errors/invalid-param-error'
-import { type Validation } from '../../interfaces/validation'
+import { type Validation } from '../validation'
 
 export class AmountValidation implements Validation {
   constructor (
