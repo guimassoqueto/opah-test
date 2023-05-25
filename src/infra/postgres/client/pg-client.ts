@@ -42,10 +42,6 @@ export class PostgresClient {
     return data
   }
 
-  public async end (): Promise<void> {
-    await this.client.end()
-  }
-
   public transactionMapper (obj: any): TransactionModel {
     if (!obj) throw new Error()
     const { amount, ...rest } = obj
