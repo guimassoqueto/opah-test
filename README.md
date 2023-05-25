@@ -5,6 +5,9 @@
 * O código utiliza fortemente princípios SOLID, e facilmente nota-se a implementação de diversos padrões de design. A estrutura de classes está fortemente coesa e fracamente acoplada.
 * Em caso de dúvidas e sugestões, estou à disposição.
 
+### Cobertura dos testes
+![Cobertura de testes](./images/test-coverage.png)
+
 ## Requisitos
 * [Node 20+](https://nodejs.org/en)
 * [Docker](https://docs.docker.com/engine/install/) e [Docker Compose](https://docs.docker.com/compose/)
