@@ -50,4 +50,13 @@ describe('DbGetCurrentBalance' , () => {
 
     expect(getSpy).toHaveBeenCalledWith("2023-12-31")
   })
+
+  test('Deve retornar o valor adequado caso a busca pelo fluxo de caixa seja bem sucedida', async () => {
+    const { sut } = makeSut()
+    const cashFlow = await sut.get("2023-12-31")
+
+    expect(cashFlow.date).toBe("2023-12-31")
+    expect(cashFlow.credits.length).toBe(0)
+    expect(cashFlow.debits.length).toBe(0)
+  })
 })
