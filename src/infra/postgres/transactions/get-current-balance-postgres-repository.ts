@@ -1,4 +1,4 @@
-import { type GetCurrentBalanceRepository } from '../../../../data/interfaces/database/transaction/get-current-balance-repository'
+import { type GetCurrentBalanceRepository } from '../../../data/interfaces/database/transaction/get-current-balance-repository'
 import { PostgresClient } from '../client/pg-client'
 
 export class GetCurrentBalancePostgresRepository implements GetCurrentBalanceRepository {

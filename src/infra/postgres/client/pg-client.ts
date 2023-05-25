@@ -1,12 +1,12 @@
 import { Pool, type PoolConfig, type QueryResult } from 'pg'
-import { type TransactionModel } from '../../../../domain/models/transactions'
+import { type TransactionModel } from '../../../domain/models/transactions'
 import {
   POSTGRES_DB,
   POSTGRES_HOST,
   POSTGRES_PASSWORD,
   POSTGRES_PORT,
   POSTGRES_USER
-} from '../../../../settings'
+} from '../../../settings'
 
 const poolConfig: PoolConfig = {
   host: POSTGRES_HOST,
