@@ -78,4 +78,16 @@ describe('CashFlowByDateController' , () => {
 
     expect(spyGet).toBeCalledWith(request.params.date)
   })
+
+  test('deve retornar 500 se o cashFlowByDate lançar erro', async () => {
+    const { sut, cashFlowByDateStub } = makeSut()
+    const spyGet = jest.spyOn(cashFlowByDateStub, "get").mockImplementationOnce(() => {
+      throw new Error("some error")
+    })
+    const request = makeRequest()
+    const response = await sut.handle(request) 
+
+    expect(response.statusCode).toBe(500)
+  })
+
 })
