@@ -73,7 +73,7 @@ Response body: {
   "balance": 250.00,
 }
 ```
-:bangbang: [em desenvolvimento, /feat/cashflow-controller](https://github.com/guimassoqueto/opah-test/tree/feat/cashflow-controller)
+:heavy_check_mark:
 ```
 GET /transactions/cashflow/{date}
 Response 200 Ok
