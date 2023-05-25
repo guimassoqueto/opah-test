@@ -69,4 +69,13 @@ describe('CashFlowByDateController' , () => {
 
     expect(spyValidate).toBeCalledWith(request.params)
   })
+
+  test('o metodo get deve requeber o valor correto', async () => {
+    const { sut, cashFlowByDateStub } = makeSut()
+    const spyGet = jest.spyOn(cashFlowByDateStub, "get")
+    const request = makeRequest()
+    await sut.handle(request) 
+
+    expect(spyGet).toBeCalledWith(request.params.date)
+  })
 })
