@@ -1,6 +1,6 @@
 import GetCurrentBalanceController from '../../../../presentation/controllers/transactions/get-current-balance-controller'
 import { DbGetCurrentBalance } from '../../../../data/usecases/db-get-current-balance'
-import { GetCurrentBalancePostgresRepository } from '../../../../infra/database/postgres/transactions/get-current-balance-postgres-repository'
+import { GetCurrentBalancePostgresRepository } from '../../../../infra/postgres/transactions/get-current-balance-postgres-repository'
 import { type Controller } from '../../../../presentation/protocols'
 
 export function makeGetCurrentBalanceController (): Controller {

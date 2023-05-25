@@ -2,7 +2,7 @@ import { TransactionModel, TransactionType } from "../../src/domain/models/trans
 import { AddTransactionModel } from "../../src/domain/usecases/add-transaction"
 import { AddTransaction } from "../../src/domain/usecases/add-transaction"
 import TransactionController from "../../src/presentation/controllers/transactions/transaction-controller"
-import { Validation } from '../../src/presentation/interfaces/validation'
+import { Validation } from '../../src/presentation/interfaces'
 import { HttpRequest } from "../../src/presentation/types/http"
 
 function makeRequest(): HttpRequest {

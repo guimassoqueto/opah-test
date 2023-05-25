@@ -3,7 +3,7 @@ import {
   RequiredFieldValidation,
   AmountValidation
 } from '../../../../presentation/validation'
-import { type Validation } from '../../../../presentation/interfaces/validation'
+import { type Validation } from '../../../../presentation/interfaces'
 
 export function makeDebitCreditValidations (): ValidationComposite {
   const validations: Validation[] = []

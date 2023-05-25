@@ -1,5 +1,5 @@
-import { GetCurrentBalancePostgresRepository } from '../../src/infra/database/postgres/transactions/get-current-balance-postgres-repository'
-import { pgPool } from '../../src/infra/database/postgres/client'
+import { GetCurrentBalancePostgresRepository } from '../../src/infra/postgres/transactions/get-current-balance-postgres-repository'
+import { pgPool } from '../../src/infra/postgres/client'
 import { PoolClient } from 'pg'
 
 let client: PoolClient;
