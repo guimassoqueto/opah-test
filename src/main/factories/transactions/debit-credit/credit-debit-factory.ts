@@ -1,5 +1,5 @@
 import { DbAddTransaction } from '../../../../data/usecases/db-add-transaction'
-import { type Controller } from '../../../../presentation/protocols'
+import { type Controller } from '../../../../presentation/interfaces'
 import { TransactionPostgresRepository } from '../../../../infra/postgres/transactions/transaction-postgres-repository'
 import { type TransactionType } from '../../../../domain/models/transactions'
 import { makeDebitCreditValidations } from './credit-debit-validations'
