@@ -43,4 +43,11 @@ describe('DbGetCurrentBalance' , () => {
     await expect(promise).rejects.toThrow()
   })
 
+  test('A funcao get do CashFlowRepository deve ser chamada com os valores corretos', async () => {
+    const { sut, cashFlowByDateRepositoryStub } = makeSut()
+    const getSpy = jest.spyOn(cashFlowByDateRepositoryStub, "get")
+    await sut.get("2023-12-31")
+
+    expect(getSpy).toHaveBeenCalledWith("2023-12-31")
+  })
 })
