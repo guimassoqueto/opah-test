@@ -1,7 +1,8 @@
-import { type Controller, type HttpRequest, type HttpResponse } from '../../protocols'
+import { type HttpRequest, type HttpResponse } from '../../types/http'
 import { type GetCurrentBalance } from '../../../domain/usecases/get-current-balance'
 import { ok, serverError } from '../../helpers/common-responses'
 import loggerConfig from '../../../logger-config'
+import { type Controller } from '../../interfaces'
 
 const logger = loggerConfig('GetBalanceController')
 

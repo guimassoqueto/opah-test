@@ -1,5 +1,5 @@
-import { GetCurrentBalancePostgresRepository } from '../../src/infra/database/postgres/transactions/get-current-balance-postgres-repository'
-import { pgPool } from '../../src/infra/database/postgres/client'
+import { GetCurrentBalancePostgresRepository } from '../../src/infra/postgres/transactions/get-current-balance-postgres-repository'
+import { pgPool } from '../../src/infra/postgres/client'
 import { PoolClient } from 'pg'
 
 let client: PoolClient;
@@ -17,14 +17,14 @@ describe('TransactionPostgresRepository add' , () => {
     (ponto flutuante)
   `, async () => {
     await client.query(`
-    INSERT INTO transactions(amount, "type") 
-    VALUES($1, $2)
-    `, [10.50, 'D'])
+    INSERT INTO transactions(amount, "type", "datetime") 
+    VALUES($1, $2, $3)
+    `, [10.50, 'D', new Date()])
 
     await client.query(`
-    INSERT INTO transactions(amount, "type") 
-    VALUES($1, $2)
-    `, [10.50, 'C'])
+    INSERT INTO transactions(amount, "type", "datetime") 
+    VALUES($1, $2, $3)
+    `, [10.50, 'C', new Date()])
 
     client.release()
 
@@ -39,14 +39,14 @@ describe('TransactionPostgresRepository add' , () => {
     créditos (inteiros)
   `, async () => {
     await client.query(`
-    INSERT INTO transactions(amount, "type") 
-    VALUES($1, $2)
-    `, [10, 'D'])
+    INSERT INTO transactions(amount, "type", "datetime") 
+    VALUES($1, $2, $3)
+    `, [10, 'D', new Date()])
 
     await client.query(`
-    INSERT INTO transactions(amount, "type") 
-    VALUES($1, $2)
-    `, [10, 'C'])
+    INSERT INTO transactions(amount, "type", "datetime") 
+    VALUES($1, $2, $3)
+    `, [10, 'C', new Date()])
 
     client.release()
 
@@ -61,14 +61,14 @@ describe('TransactionPostgresRepository add' , () => {
     maior que o total de débitos (ponto flutuante)
   `, async () => {
     await client.query(`
-    INSERT INTO transactions(amount, "type") 
-    VALUES($1, $2)
-    `, [10.49, 'C'])
+    INSERT INTO transactions(amount, "type", "datetime") 
+    VALUES($1, $2, $3)
+    `, [10.49, 'C', new Date()])
 
     await client.query(`
-    INSERT INTO transactions(amount, "type") 
-    VALUES($1, $2)
-    `, [10.48, 'D'])
+    INSERT INTO transactions(amount, "type", "datetime") 
+    VALUES($1, $2, $3)
+    `, [10.48, 'D', new Date()])
 
     client.release()
 
@@ -83,14 +83,14 @@ describe('TransactionPostgresRepository add' , () => {
   menor que o total de débitos (ponto flutuante)
     `, async () => {
     await client.query(`
-    INSERT INTO transactions(amount, "type") 
-    VALUES($1, $2)
-    `, [10.49, 'C'])
+    INSERT INTO transactions(amount, "type", "datetime") 
+    VALUES($1, $2, $3)
+    `, [10.49, 'C', new Date()])
 
     await client.query(`
-    INSERT INTO transactions(amount, "type") 
-    VALUES($1, $2)
-    `, [11.51, 'D'])
+    INSERT INTO transactions(amount, "type", "datetime") 
+    VALUES($1, $2, $3)
+    `, [11.51, 'D', new Date()])
 
     client.release()
 
@@ -105,14 +105,14 @@ describe('TransactionPostgresRepository add' , () => {
   maior que o total de débitos (inteiros)
   `, async () => {
     await client.query(`
-    INSERT INTO transactions(amount, "type") 
-    VALUES($1, $2)
-    `, [15, 'C'])
+    INSERT INTO transactions(amount, "type", "datetime")
+    VALUES($1, $2, $3)
+    `, [15, 'C', new Date()])
 
     await client.query(`
-    INSERT INTO transactions(amount, "type") 
-    VALUES($1, $2)
-    `, [10, 'D'])
+    INSERT INTO transactions(amount, "type", "datetime")
+    VALUES($1, $2, $3)
+    `, [10, 'D', new Date()])
 
     client.release()
 
@@ -127,14 +127,14 @@ describe('TransactionPostgresRepository add' , () => {
   `, async () => {
 
     await client.query(`
-    INSERT INTO transactions(amount, "type") 
-    VALUES($1, $2)
-    `, [10.49, 'C'])
+    INSERT INTO transactions(amount, "type", "datetime")  
+    VALUES($1, $2, $3)
+    `, [10.49, 'C', new Date()])
 
     await client.query(`
-    INSERT INTO transactions(amount, "type") 
-    VALUES($1, $2)
-    `, [10.50, 'C'])
+    INSERT INTO transactions(amount, "type", "datetime") 
+    VALUES($1, $2, $3)
+    `, [10.50, 'C', new Date()])
 
     client.release()
 
@@ -150,14 +150,14 @@ describe('TransactionPostgresRepository add' , () => {
   `, async () => {
 
     await client.query(`
-    INSERT INTO transactions(amount, "type") 
-    VALUES($1, $2)
-    `, [10.49, 'D'])
+    INSERT INTO transactions(amount, "type", "datetime") 
+    VALUES($1, $2, $3)
+    `, [10.49, 'D', new Date()])
 
     await client.query(`
-    INSERT INTO transactions(amount, "type") 
-    VALUES($1, $2)
-    `, [10.50, 'D'])
+    INSERT INTO transactions(amount, "type", "datetime")  
+    VALUES($1, $2, $3)
+    `, [10.50, 'D', new Date()])
 
     client.release()
 

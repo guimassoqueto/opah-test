@@ -1,9 +1,9 @@
 import { type Request, type Response } from 'express'
+import { type Controller } from '../../../presentation/interfaces'
 import {
-  type Controller,
   type HttpRequest,
   type HttpResponse
-} from '../../../presentation/protocols'
+} from '../../../presentation/types/http'
 
 export function expressAdapter (controller: Controller) {
   return async (req: Request, res: Response) => {

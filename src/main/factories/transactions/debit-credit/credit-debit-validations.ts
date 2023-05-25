@@ -1,9 +1,9 @@
+import { ValidationComposite } from '../../../../presentation/validation/validation-composite'
+import { type Validation } from '../../../../presentation/interfaces'
 import {
-  ValidationComposite,
-  RequiredFieldValidation,
-  AmountValidation
-} from '../../../../presentation/validation'
-import { type Validation } from '../../../../presentation/interfaces/validation'
+  AmountValidation,
+  RequiredFieldValidation
+} from '../../../../presentation/validation/validations'
 
 export function makeDebitCreditValidations (): ValidationComposite {
   const validations: Validation[] = []

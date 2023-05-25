@@ -1,12 +1,12 @@
 import { Pool, type PoolConfig, type QueryResult } from 'pg'
-import { type TransactionModel } from '../../../../domain/models/transactions'
+import { type TransactionModel } from '../../../domain/models/transactions'
 import {
   POSTGRES_DB,
   POSTGRES_HOST,
   POSTGRES_PASSWORD,
   POSTGRES_PORT,
   POSTGRES_USER
-} from '../../../../settings'
+} from '../../../settings'
 
 const poolConfig: PoolConfig = {
   host: POSTGRES_HOST,
@@ -40,10 +40,6 @@ export class PostgresClient {
   public async query (query: string, values?: any[]): Promise<QueryResult<any>> {
     const data = await this.client.query(query, values)
     return data
-  }
-
-  public async end (): Promise<void> {
-    await this.client.end()
   }
 
   public transactionMapper (obj: any): TransactionModel {
