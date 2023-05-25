@@ -34,4 +34,12 @@ describe('DateValidation' , () => {
     expect(sut.validate).toThrow()
   })
 
+  test('DateValidator deve ser chamado com o valor correto', () => { 
+    const { sut, validatorStub } = makeSut()
+    const isValidSpy = jest.spyOn(validatorStub, "isValid")
+    const input = { date: "2023-12-31" }
+    sut.validate(input)
+
+    expect(isValidSpy).toHaveBeenCalledWith("2023-12-31")
+  })
 })
