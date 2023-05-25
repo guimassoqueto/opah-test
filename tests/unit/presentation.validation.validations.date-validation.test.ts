@@ -53,4 +53,11 @@ describe('DateValidation' , () => {
     expect(result).toEqual(error)
   })
 
+  test('Deve retornar null se a validação passar', () => {
+    const { sut } = makeSut()
+    const input = { date: "2023-12-31" }
+    const result = sut.validate(input)
+
+    expect(result).toBeNull()
+  })
 })
