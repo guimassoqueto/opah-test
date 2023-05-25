@@ -42,4 +42,15 @@ describe('DateValidation' , () => {
 
     expect(isValidSpy).toHaveBeenCalledWith("2023-12-31")
   })
+
+  test('Deve retornar o erro se a validação não passar', () => {
+    const { sut, validatorStub } = makeSut()
+    jest.spyOn(validatorStub, "isValid").mockReturnValueOnce(false)
+    const input = { date: "invalid-date" }
+    const result = sut.validate(input)
+    const error = new InvalidParamError("date")
+
+    expect(result).toEqual(error)
+  })
+
 })
