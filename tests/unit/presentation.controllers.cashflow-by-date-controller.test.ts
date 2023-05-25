@@ -90,4 +90,14 @@ describe('CashFlowByDateController' , () => {
     expect(response.statusCode).toBe(500)
   })
 
+  test('deve retornar 500 se o validation lançar erro', async () => {
+    const { sut, validationStub } = makeSut()
+    const spyValidate = jest.spyOn(validationStub, "validate").mockImplementationOnce(() => {
+      throw new Error("some error")
+    })
+    const request = makeRequest()
+    const response = await sut.handle(request) 
+
+    expect(response.statusCode).toBe(500)
+  })
 })
