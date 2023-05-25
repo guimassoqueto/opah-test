@@ -70,7 +70,7 @@ Response body: {
   "balance": 250.00,
 }
 ```
-:bangbang: - trabalhando na feature em uma branch local... [24/05/2023]
+:bangbang:
 ```
 GET /transactions/cashflow/{date}
 Response 200 Ok
