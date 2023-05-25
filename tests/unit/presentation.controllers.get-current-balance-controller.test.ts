@@ -1,6 +1,6 @@
 import { GetCurrentBalance } from "../../src/domain/usecases/get-current-balance"
 import GetCurrentBalanceController from "../../src/presentation/controllers/transactions/get-current-balance-controller"
-import { HttpRequest } from "../../src/presentation/protocols"
+import { HttpRequest } from "../../src/presentation/types/http"
 
 function makeGetCurrentBalance(): GetCurrentBalance {
   class GetCurrentBalanceStub implements GetCurrentBalance {
