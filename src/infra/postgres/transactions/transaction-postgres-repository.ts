@@ -7,11 +7,11 @@ export class TransactionPostgresRepository implements AddTransactionRepository {
   async add (transaction: AddTransactionModel): Promise<TransactionModel> {
     const pgClient = PostgresClient.getInstance()
     const result = await pgClient.query(`
-      INSERT INTO transactions(amount, "type") 
-      VALUES($1, $2) 
+      INSERT INTO transactions(amount, "type", "datetime") 
+      VALUES($1, $2, $3) 
       RETURNING *
     `,
-    [transaction.amount, transaction.type]
+    [transaction.amount, transaction.type, new Date()]
     )
 
     return pgClient.transactionMapper(result.rows[0])
