@@ -78,7 +78,7 @@ Response body: {
 GET /transactions/cashflow/{date}
 Response 200 Ok
 Response body: {
-  "date": "31-12-2023", # formato dd-mm-yyyy
+  "date": "31-12-2023", # formato yyyy-mm-dd
   "credits": [
     {
       "id": "08c71152-c552-42e7-b094-f510ff44e9cb",
