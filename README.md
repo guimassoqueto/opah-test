@@ -1,21 +1,28 @@
-## Opah Test
+# Opah Test
 * Por se tratar de um sistema financeiro, optei em fazer a aplicação utilizando o mínimo de depedências node possível, para minimizar a possibilidade de vulnerabilidades.
 * O sistema não conta com suporte para multiplos comerciantes, e não possui sitema de autenticação. Isso pode ser extendido a qualquer momento no código. 
 * A aplicação possui alta cobertura de testes. Execute-os (após subir a aplicação) usando o comando `make test`
 * O código utiliza fortemente princípios SOLID, e facilmente nota-se a implementação de diversos padrões de design. A estrutura de classes está fortemente coesa e fracamente acoplada.
 * Em caso de dúvidas e sugestões, estou à disposição.
 
-### Cobertura dos testes
+<br/><br/>
+
+## Cobertura dos testes
 ![Cobertura de testes](./images/test-coverage.png)
+
+<br/><br/>
 
 ## Requisitos
 * [Node 20+](https://nodejs.org/en)
 * [Docker](https://docs.docker.com/engine/install/) e [Docker Compose](https://docs.docker.com/compose/)
 
+<br/><br>
 
 ## Como rodar a aplicação
-
 ### Para usuários Linux (Debian)
+
+<br/>
+
 **1. Instale o pacote buid-essential:**
  ```shell
  sudo apt-get install build-essential
@@ -42,13 +49,15 @@ make start-ts
 make start-js
 ```
 
+<br/>
+
 ### Para usuários Windows
 **1. Instale o [Gerenciador de Pacotes Chocolatey](https://chocolatey.org/install)**  
 **2. Instale o pacote make (para rodar comandos make):**
 ```shell
 choco install make
 ```
-**3. Configure as variáveis de ambiente *.env* e *compose.env* a partir do *.env.sample***
+**3. Configure as variáveis de ambiente *.env* e *compose.env* a partir do *.env.sample***  
 *Para executar a aplicação containerizada (ignore os passos 4, e 5):*
 ```shell
 make up
@@ -61,7 +70,7 @@ POSTGRES_HOST="postgres"
 ```shell
 make install
 ```
-**5. Escolha entre:**
+**5. Escolha entre:**  
 *Executar a aplicação sem a necessidade de transpilar o código:*
 ```shell
 make start-ts
@@ -71,7 +80,9 @@ make start-ts
 make start-js
 ```
 
-### Rotas 
+<br/><br>
+
+## Rotas
  
 `http://localhost:8000/transactions/debit`
 
