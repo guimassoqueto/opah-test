@@ -16,27 +16,66 @@
 ## Como rodar a aplicação
 
 ### Para usuários Linux (Debian)
-1. Instale o pacote buid-essential: `sudo apt-get install build-essential`
-2. `make env` para gerar os arquivos *compose.env* e *.env*
-* Para rodar a aplicação completamente containerizada (banco de dados + migrações + aplicacção node) (ignore passos 3 e 4): `make up`
-3. `make install` para instalar as dependências do node
-4. Escolha entre:  
--- `make start-ts` para executar a aplicação sem a necessidade de transpilar o código  
--- `make start-js` transpila para javascript e executa o app
+**1. Instale o pacote buid-essential:**
+ ```shell
+ sudo apt-get install build-essential
+ ```
+**2. Gerar os arquivos *compose.env* e *.env*:**
+```shell 
+make env
+```
+*Para rodar a aplicação completamente containerizada (banco de dados + migrações + aplicacação node) (ignore passos 3 e 4):*  
+```shell
+make up
+```
+**3. Para instalar as dependências do node:**
+```shell
+make install
+```
+**4. Escolha entre:**  
+*Executar a aplicação sem a necessidade de transpilar o código:*
+```shell
+make start-ts
+```   
+*Executar a aplicação em javascript (transpila o código ts)*
+```shell
+make start-js
+```
 
 ### Para usuários Windows
-1. Instale o gerenciador [Gerenciador Chocolatey](https://chocolatey.org/install)
-2. Instale o pacote make (para rodar comandos make): `choco install make`
-3. Configure as varáveis de ambiente *.env* e *compose.env* a partir do *.env.sample*
-* Para executar a aplicação containerizada (ignore os passos 4, e 5): `make up`. Neste caso adicione a linha `POSTGRES_HOST="postgres"` no arquivo *compose.env*
-4. `make install` para instalar as dependências do node
-5. Escolha entre:  
--- `make start-ts` para executar a aplicação sem a necessidade de transpilar o código  
--- `make start-js` transpila para javascript e executa o app
+**1. Instale o [Gerenciador de Pacotes Chocolatey](https://chocolatey.org/install)**  
+**2. Instale o pacote make (para rodar comandos make):**
+```shell
+choco install make
+```
+**3. Configure as variáveis de ambiente *.env* e *compose.env* a partir do *.env.sample***
+*Para executar a aplicação containerizada (ignore os passos 4, e 5):*
+```shell
+make up
+```  
+*Neste caso adicione a linha no arquivo compose.env*
+```shell 
+POSTGRES_HOST="postgres"
+``` 
+**4. Para instalar as dependências do node:**
+```shell
+make install
+```
+**5. Escolha entre:**
+*Executar a aplicação sem a necessidade de transpilar o código:*
+```shell
+make start-ts
+```   
+*Executar a aplicação em javascript (transpila o código ts):*
+```shell
+make start-js
+```
 
 ### Rotas 
-:heavy_check_mark:
-```
+ 
+`http://localhost:8000/transactions/debit`
+
+```vbnet
 POST /transactions/debit
 Request body: {
   "amount": 50.00
@@ -50,8 +89,11 @@ Response body: {
   "datetime": "2023-05-24T19:12:32.876Z"
 }
 ```
-:heavy_check_mark:
-```
+
+<br/><br/> 
+`http://localhost:8000/transactions/credit`
+
+```vbnet
 POST /transactions/credit
 Request body: {
   "amount": 300.00
@@ -65,16 +107,22 @@ Response body: {
   "datetime": "2023-05-24T19:12:56.519Z"
 }
 ```
-:heavy_check_mark:
-```
+
+<br/><br/>
+`http://localhost:8000/transactions/balance`
+
+```vbnet
 GET /transactions/balance
 Response: 200 Ok
 Response body: {
   "balance": 250.00,
 }
 ```
-:heavy_check_mark:
-```
+
+<br/><br/>
+`http://localhost:8000/transactions/cashflow/yyyy-mm-dd`
+
+```vbnet
 GET /transactions/cashflow/{date}
 Response 200 Ok
 Response body: {
