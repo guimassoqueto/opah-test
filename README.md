@@ -20,9 +20,6 @@
 
 ## Como rodar a aplicação
 ### Para usuários Linux (Debian)
-
-<br/>
-
 **1. Instale o pacote buid-essential:**
  ```shell
  sudo apt-get install build-essential
