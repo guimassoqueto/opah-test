@@ -82,7 +82,7 @@ make start-js
 ## Rotas
  
 `http://localhost:8000/transactions/debit`
-
+*insere uma operação de débito*
 ```vbnet
 POST /transactions/debit
 Request body: {
@@ -100,7 +100,7 @@ Response body: {
 
 <br/><br/> 
 `http://localhost:8000/transactions/credit`
-
+*insere uma operação de crédito*
 ```vbnet
 POST /transactions/credit
 Request body: {
@@ -118,7 +118,7 @@ Response body: {
 
 <br/><br/>
 `http://localhost:8000/transactions/balance`
-
+*calcula o saldo atual do cliente*
 ```vbnet
 GET /transactions/balance
 Response: 200 Ok
@@ -129,7 +129,7 @@ Response body: {
 
 <br/><br/>
 `http://localhost:8000/transactions/cashflow/yyyy-mm-dd`
-
+*retorna todas as operações financeiras de determinado dia*
 ```vbnet
 GET /transactions/cashflow/{date}
 Response 200 Ok
